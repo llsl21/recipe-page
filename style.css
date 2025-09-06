@@ -41,7 +41,7 @@
 body {
   min-height: 100vh;
   background-color: var(--stone100);
-  padding-block: 128px;
+  padding: 128px 76px;
 }
 
 img {
@@ -58,6 +58,8 @@ hr {
   border: none;
   height: 1px;
   background-color: var(--stone150);
+  margin-block-start: -1px;
+  transform: translateY(0.5px);
 }
 
 main {
