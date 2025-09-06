@@ -259,6 +259,10 @@ ol {
   }
 }
 
+.sp-only {
+  display: none;
+}
+
 @media (width <= 375px) {
   :root {
     --text-preset-1: normal 400 36px / 1 "Young Serif", serif;
@@ -276,5 +280,9 @@ ol {
   .fv-img {
     height: 171px;
     width: 100%;
+  }
+
+  .sp-only {
+    display: block;
   }
 }
