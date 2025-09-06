@@ -27,7 +27,7 @@
   --text-preset-2: normal 400 28px / 1 "Young Serif", serif;
   --text-preset-3: normal 600 20px / 1 "Outfit", sans-serif;
   --text-preset-4: normal 400 16px / 1.5 "Outfit", sans-serif;
-  --text-preset-4-bold: normal 700 16px / 1.5 "Outfit", jsans-serif;
+  --text-preset-4-bold: normal 700 16px / 1.5 "Outfit", sans-serif;
 }
 
 *,
@@ -126,6 +126,7 @@ main {
 .unordered-dot {
   > li {
     position: relative;
+    font: var(--text-preset-4);
     &::before {
       content: "";
       position: absolute;
@@ -164,27 +165,91 @@ main {
   color: var(--stone600);
 }
 
-.instructions {
-}
-
-.instructions ol {
-  counter-reset: count;
-}
-
-.instructions ol li {
-  counter-increment: count 1;
-}
-
-.ordered-dot {
+ol {
   list-style-type: none;
-  > li {
+}
+
+ol {
+  counter-reset: list;
+  padding-inline-start: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  li {
+    counter-increment: list;
+    color: var(--stone600);
+    font: var(--text-preset-4);
+    &::before {
+      content: counter(list) ".";
+      width: 16px;
+      display: inline-block;
+      margin-inline-end: 16px;
+      font: var(--text-preset-4-bold);
+      color: var(--brown800);
+    }
+  }
+}
+
+.nutrition {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nutrition p {
+  font: var(--text-preset-4);
+  color: var(--stone600);
+}
+
+.nutrition table {
+  padding-inline: 32px;
+  border-spacing: 0;
+
+  tr:not(:last-child) > * {
     position: relative;
     &::before {
-      content: counter(count) ".";
+      content: "";
       position: absolute;
-      left: -32px;
-      color: var(--rose800);
-      transform: translateY(-50%);
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      border-block-end: 1px solid var(--stone150);
     }
+  }
+
+  tr > * {
+    width: 50%;
+    text-align: left;
+  }
+
+  tr:first-child > * {
+    padding-block-end: 12px;
+  }
+
+  tr:last-child > * {
+    padding-block-start: 12px;
+  }
+
+  tr:not(:first-child, :last-child) > * {
+    padding-block: 12px;
+  }
+
+  tr > *:first-child {
+    padding-inline-end: 8px;
+  }
+
+  tr > :not(*:first-child) {
+    padding-inline-start: 8px;
+  }
+
+  th {
+    font: var(--text-preset-4);
+    color: var(--stone600);
+  }
+
+  td {
+    font: var(--text-preset-4-bold);
+    color: var(--brown800);
   }
 }
